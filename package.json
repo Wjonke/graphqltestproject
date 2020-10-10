@@ -1,0 +1,17 @@
+{
+  "name": "graphqltestproject",
+  "version": "1.0.0",
+  "description": "Simple GQL Server",
+  "main": "server.js",
+  "repository": "https://github.com/Wjonke/graphqltestproject.git",
+  "author": "wjonke <wesjonke@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev:server": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "nodemon": "^2.0.4"
+  }
+}
