@@ -5,20 +5,20 @@ const {
   GraphQLSchema,
   GraphQLList,
   GraphQLNonNull,
-} = require("graphql");
+} = require('graphql');
 
 //Hard coded data just for now, JSON Server to be used later
 const customers = [
-  { id: "1", name: "Wes Jonke", email: "test@gmail.com", age: 37 },
-  { id: "2", name: "Sam Smith", email: "test@gmail.com", age: 22 },
-  { id: "3", name: "Jim Jones", email: "test@gmail.com", age: 34 },
-  { id: "4", name: "somyoung guuy", email: "test@gmail.com", age: 89 },
+  { id: '1', name: 'Wes Jonke', email: 'test@gmail.com', age: 37 },
+  { id: '2', name: 'Sam Smith', email: 'test@gmail.com', age: 22 },
+  { id: '3', name: 'Jim Jones', email: 'test@gmail.com', age: 34 },
+  { id: '4', name: 'somyoung guuy', email: 'test@gmail.com', age: '89' },
 ];
 
 //customer type
 //used in the root, types and structure set up here
 const CustomerType = new GraphQLObjectType({
-  name: "Customer",
+  name: 'Customer',
   fields: () => ({
     id: { type: GraphQLString },
     name: { type: GraphQLString },
@@ -30,7 +30,7 @@ const CustomerType = new GraphQLObjectType({
 //root query
 //uses the type we defined above
 const RootQuery = new GraphQLObjectType({
-  name: "RootQueryType",
+  name: 'RootQueryType',
   fields: {
     customer: {
       type: CustomerType,
@@ -44,6 +44,13 @@ const RootQuery = new GraphQLObjectType({
             return customers[i];
           }
         }
+      },
+    },
+    //gets a list of all customers in the array
+    customers: {
+      type: new GraphQLList(CustomerType),
+      resolve(parentValue, args) {
+        return customers;
       },
     },
   },
