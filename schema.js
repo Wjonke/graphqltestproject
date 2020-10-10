@@ -31,9 +31,24 @@ const CustomerType = new GraphQLObjectType({
 //uses the type we defined above
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
-  customer: {
-    type: CustomerType,
+  fields: {
+    customer: {
+      type: CustomerType,
+      args: {
+        id: { type: GraphQLString },
+      },
+      //this will return the customer that matches the id passed in compared to the hard coded customers using a for loop.
+      resolve(parentValue, args) {
+        for (let i = 0; i < customers.length; i++) {
+          if (customers[i].id == args.id) {
+            return customers[i];
+          }
+        }
+      },
+    },
   },
 });
 
-module.exports = new GraphQLSchema({});
+module.exports = new GraphQLSchema({
+  query: RootQuery,
+});
