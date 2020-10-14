@@ -1,13 +1,28 @@
 {
   "customers": [
-    { "id": "1", "name": "Wes Jonke", "email": "test@gmail.com", "age": 37 },
-    { "id": "2", "name": "Sam Smith", "email": "test@gmail.com", "age": 22 },
-    { "id": "3", "name": "Jim Jones", "email": "test@gmail.com", "age": 34 },
+    {
+      "id": "1",
+      "name": "Wes Jonke",
+      "email": "test@gmail.com",
+      "age": 48
+    },
+    {
+      "id": "3",
+      "name": "Jim Jones",
+      "email": "test@gmail.com",
+      "age": 34
+    },
     {
       "id": "4",
       "name": "somyoung guuy",
       "email": "test@gmail.com",
-      "age": "89"
+      "age": 89
+    },
+    {
+      "name": "New Guye",
+      "email": "test@gmil.com",
+      "age": 54,
+      "id": "HLJ13BA"
     }
   ]
 }
