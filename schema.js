@@ -17,7 +17,7 @@ const {
 //   { id: '4', name: 'somyoung guuy', email: 'test@gmail.com', age: '89' },
 // ];
 
-//customer type
+//sets up customer typing
 //used in the root, types and structure set up here
 const CustomerType = new GraphQLObjectType({
   name: 'Customer',
