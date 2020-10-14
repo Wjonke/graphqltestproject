@@ -34,6 +34,8 @@ const CustomerType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
+    //get individual customer by id
+
     customer: {
       type: CustomerType,
       args: {
@@ -41,23 +43,33 @@ const RootQuery = new GraphQLObjectType({
       },
       //this will return the customer that matches the id passed in compared to the hard coded customers using a for loop.
       resolve(parentValue, args) {
+        return (
+          //new data using json server, this could also be for any other api,we are using using axios
+          axios
+            .get('http://localhost:3000/customers/' + args.id)
+            .then((res) => res.data)
+        );
+
         //original data, hardcoded above
         // for (let i = 0; i < customers.length; i++) {
         //   if (customers[i].id == args.id) {
         //     return customers[i];
         //   }
         // }
-        //new data using json server, this could also be for any other api,we are using using axios
-        return axios
-          .get('http://localhost:3000/customers/' + args.id)
-          .then((res) => res.data);
       },
     },
-    //gets a list of all customers in the array
+
+    //gets a list of all customers
     customers: {
       type: new GraphQLList(CustomerType),
       resolve(parentValue, args) {
-        return customers;
+        // using axios ans json server
+        return axios
+          .get('http://localhost:3000/customers')
+          .then((res) => res.data);
+
+        // using hardcoded data above
+        // return customers;
       },
     },
   },
